@@ -1,38 +1,172 @@
-.App {
-  text-align: center;
+:root{
+  /* Theme 1 */
+  /* #### Backgrounds */
+  --main-background: hsl(222, 26%, 31%);
+  --toggle-background:hsl(223, 31%, 20%);
+  --screen-background: hsl(224, 36%, 15%);
+  /* #### Keys */
+ --key-background: hsl(225, 21%, 49%);
+ --key-shadow2: hsl(224, 28%, 35%);
+  --key-toggle: hsl(6, 63%, 50%);
+  --key-shadow: hsl(6, 70%, 34%);
+  --Hover2:tomato;
+  --Light-orange: hsl(30, 25%, 89%);
+  --Grayish-orange:hsl(28, 16%, 65%);
+  /* #### Text */
+  --Very-dark: hsl(221, 14%, 31%);
+  --White: hsl(0, 0%, 100%);
+  --Hover:hsl(222deg 43% 74%);
+  --Right:-10px;
+  --Hover3:white;
 }
-
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+ul li{
+  list-style: none;
 }
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
 }
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.calculator{
+  transform: translate(-50%,-50%);
+  left: 50%;
+  top: 50%;
+  position: absolute;
+  max-width: 400px;
+}
+.calculator header{
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin-bottom: 30px;
+  justify-content: space-between;
+  color: var(--White);
+  font-size: 14px;
 }
-
-.App-link {
-  color: #61dafb;
+header .theme{
+  display: flex;
+  gap: 30px;
+  font-size: 11px;
+  position: relative;
 }
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+header .theme h4{
+  position: absolute;
+  bottom: -6px;
+  right: 80px;
+}
+.theme ul{
+  display: flex;
+  gap: 10px;
+  font-weight: bold;
+  position: relative;
+}
+.theme ul::before{
+  cursor: pointer;
+  content: "";
+  position: absolute;
+  height: 18px;
+  width: 100%;
+  background-color: var(--toggle-background);
+  bottom: -10px;
+  border-radius: 9px;
+}
+.theme ul li{
+  margin-right: 5px;
+  cursor: pointer;
+}
+.theme ul .active1{
+position: relative;
+}
+.theme ul .active1::before{
+  content: "";
+  position: absolute;
+  height: 12px;
+  width: 12px;
+  border-radius: 50%;
+  background-color: var(--key-toggle);
+  bottom: -7px;
+  right: var(--Right);
+}
+.calculator aside{
+  height: 95px;
+  background-color: var(--screen-background);
+  margin-bottom: 20px;
+  border-radius: 6px;
+  color: var(--White);
+  font-size: 40px;
+  font-weight: bold;
+  padding-top: 20px;
+  padding-right: 25px;
+  position: relative;
+}
+aside .previous{
+  position: absolute;
+  right: 10px;
+  top: 1px;
+  font-size: 24px;
+ 
+}
+aside .current{
+  position: absolute;
+  right: 20px;
+  bottom: 8px;
+ 
+}
+.calculator main{
+  background-color: var(--toggle-background);
+  padding: 20px;
+  border-radius: 6px;
+}
+.calculator .body{
+  display: grid;
+  grid-template-columns: repeat(4,75px);
+  gap: 20px;
+}
+.calculator .body button{
+  font-size: 2rem;
+  transition: .3s;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  background-color: var(--Light-orange);
+  border: none;
+  color: var(--Very-dark);
+  border-radius: 6px;
+  padding: 5px;
+  box-shadow: 1px 1px 1px 1px var(--Grayish-orange);
+}
+.body .del,
+.body .reset{
+  background-color: var(--key-background) !important;
+  color: white !important;
+  font-size: 24px !important;
+  letter-spacing: 1px;
+  box-shadow: 1px 1px 1px 1px var(--key-shadow2) !important;
+}
+.body .equal{
+  grid-column: span 2;
+  background-color: var(--key-toggle) !important;
+  color: white !important;
+  box-shadow: 1px 1px 1px 1px var(--key-shadow) !important;
+}
+.body .reset{
+  grid-column: span 2;
+}
+button:hover{
+  background-color: var(--Hover3) !important;
+}
+.del:hover,
+.reset:hover{
+  background-color:var(--Hover) !important;
+}
+.equal:hover{
+  background-color: var(--Hover2) !important;
+}
+@media(max-width:375px){
+  .calculator .body{
+    grid-template-columns: repeat(4,50px);
   }
-  to {
-    transform: rotate(360deg);
+  .body .del{
+    font-size: 22px !important;
   }
 }
